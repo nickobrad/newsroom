@@ -1,0 +1,9 @@
+{% block title %}
+    <title>
+        Bootstrap Site
+    </title>
+{% endblock title %}
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/error.css')}}">
+{% endblock styles %}
