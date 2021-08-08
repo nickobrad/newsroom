@@ -11,12 +11,15 @@ api_key = config.NEWS_API_KEY
 
 generalURL = Config.NEWS_API_GENERAL
 categoryURL = Config.NEWS_API_SOURCE
+topicURL = Config.NEWS_API_SEARCH
+sourceURL = Config.NEWS_API_SOURCE_URL
 
 def getTheRequired(any_list):
 
     general_results = []
 
     for singlecontent in any_list:
+        source = singlecontent.get('source')
         author = singlecontent.get('author')
         title = singlecontent.get('title')
         publishedAt = singlecontent.get('publishedAt')
@@ -24,7 +27,7 @@ def getTheRequired(any_list):
         url = singlecontent.get('url')
         urlToImage = singlecontent.get('urlToImage')
 
-        news_article = General (author, title, publishedAt, description, url, urlToImage)
+        news_article = General (source, author, title, publishedAt, description, url, urlToImage)
         general_results.append(news_article)
 
     return general_results
@@ -55,9 +58,9 @@ def hp_allcontent():
 
         if allcontentJSON['articles']:
             allcontent_list = allcontentJSON['articles']
-            showToUser = getTheRequired(allcontent_list)
+            showAllToUser = getTheRequired(allcontent_list)
     
-    return showToUser
+    return showAllToUser
 
 def categorycontent(searchedCategory):
 
@@ -69,8 +72,37 @@ def categorycontent(searchedCategory):
 
         if categoryContentJSON['sources']:
             categoryContent_list = categoryContentJSON['sources']
-            showResult = getTheRequiredForCategory(categoryContent_list)
+            showCategoryResult = getTheRequiredForCategory(categoryContent_list)
     
-    return showResult
+    return showCategoryResult
+
+def topiccontent(searchedTopic):
+
+    topicContentURL = topicURL.format(searchedTopic, api_key)
+
+    with urllib.request.urlopen(topicContentURL) as url:
+        topicContentRAW = url.read()
+        topicContentJSON = json.loads(topicContentRAW)
+
+        if topicContentJSON['articles']:
+            topicContent_list = topicContentJSON['articles']
+            showTopicResult = getTheRequired(topicContent_list)
+    
+    return showTopicResult
+
+def sourcecontent(searchedSource):
+    sourceContentURL = sourceURL.format(searchedSource, api_key)
+
+    with urllib.request.urlopen(sourceContentURL) as url:
+        sourceContentRAW = url.read()
+        sourceContentJSON = json.loads(sourceContentRAW)
+
+        if sourceContentJSON['articles']:
+            sourceContent_list = sourceContentJSON['articles']
+            showSourceResult = getTheRequired(sourceContent_list)
+    
+    return showSourceResult
+
+
 
 
