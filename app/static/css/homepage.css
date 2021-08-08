@@ -1,0 +1,52 @@
+.firstsight{
+    background-color: aquamarine;
+    height: 400px;
+    width:100%;
+    
+}
+#col1{
+    background-color: brown;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#col2{
+    background-color: chocolate;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 350px;
+
+}
+.fsimage{
+    height:80%;
+    width:150px;
+    background-color: blueviolet;
+}
+.fscontent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+#searchInputs{
+    padding-top: 10px;
+    width: 60%;
+    display: flex;
+}
+#topicSearch{
+    margin-right: 10px;
+}
+form{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.row{
+    padding-top: 10px;
+}
+.card{
+    margin: 7px 0px;
+    height: max-content;
+}
