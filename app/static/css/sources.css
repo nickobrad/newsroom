@@ -1,0 +1,25 @@
+#bigWrapper{
+    background-color: darksalmon;
+}
+#searchInputs{
+    padding-top: 10px;
+    width: 60%;
+    display: flex;
+}
+#categorySearch{
+    margin-right: 10px;
+}
+form{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.contentshowing{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.card{
+    margin: 7px 0px;
+    height: max-content;
+}
