@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
 {% block title %}
     Home Page
 {% endblock title %}
@@ -6,3 +8,45 @@
     {{ super() }}
     <link rel="stylesheet" href="{{url_for('static',filename='css/homepage.css')}}">
 {% endblock styles %}
+
+{% block hpcontent %}
+<div class="container-fluid" id = "bigWrapper">
+    <div class="firstsight">
+        <div class="row">
+            <div class="col" id = "col1">
+                <div class="fsimage">
+                    <img src="" alt="" srcset="">
+                </div>
+            </div>
+            <div class="col" id = "col2">
+                <div class="fscontent">
+                    <p>
+                        Hi. Welcome to Newsy.
+                    </p>
+                    <p>
+                        Find all your favorite news topics here at the palm of your hand for free.
+                        Peruse through our website and discover more.
+                    </p>
+                    <p>
+                        Welcome again!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="searchbar">
+        <form action="">
+            <div class="form-floating mb-3" id = "searchInputs">
+                <input type = "text" class = "form-control" id = "topicSearch" name = "topicSearch" placeholder = "Please search for news by topic">
+                <button type = "submit" value = "Submit" class = "btn btn-outline-secondary" id = "searchButton">Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="row" id = "row1">
+        <h3 class = "hpheading">
+            Trending Topics Right Now
+        </h3>
+        {{ macro.displayHomePageContent(all_news) }}
+    </div>
+</div>
+{% endblock hpcontent %}

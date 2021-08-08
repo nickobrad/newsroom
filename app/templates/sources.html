@@ -1,9 +1,56 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
 {% block title %}
-    <title>
-        Bootstrap Site
-    </title>
+    Bootstrap Site
 {% endblock title %}
 {% block styles %}
     {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/sources.css')}}">
-{% endblock styles %}
+    <link rel="stylesheet" href="{{url_for('static',filename = 'css/sources.css')}}">
+  {% endblock %}
+{% block search %}
+    <div class="container-fluid" id = "bigWrapper">
+        <form action="">
+            <div class="form-floating mb-3" id = "searchInputs">
+                <input type = "text" class = "form-control" id = "categorySearch" name = "categorySearch" placeholder = "Please search for news by category">
+                <button type = "submit" value = "Submit" class = "btn btn-outline-secondary" id = "searchButton">Search</button>
+            </div>
+        </form>
+        <div class="row">
+            <div class="business">
+                <div class="heading">
+                    <h4>
+                        Business related newss:
+                    </h4>
+                </div>
+                <div class="contentshowing">
+                    {{ macro.showCategoryContent(business) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="entertainment">
+                <div class="heading">
+                    <h4>
+                        Entertainment related news:
+                    </h4>
+                </div>
+                <div class="contentshowing">
+                    {{ macro.showCategoryContent(entertainment) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="general">
+                <div class="heading">
+                    <h4>
+                        General related news:
+                    </h4>
+                </div>
+                <div class="contentshowing">
+                    {{ macro.showCategoryContent(general) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock search %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+{% block title %}
+    {{ title }}
+{% endblock title %}
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/newsoutlet.css')}}">
+{% endblock styles %}
+{% block newsoutlet %}
+    <h4>
+        You have {{ outlet | count }} results on {{ title }}
+    </h4>
+    <div class="container-fluid contentshowing">
+        
+        {{ macro.displayHomePageContent(outlet) }}
+    </div>
+{% endblock newsoutlet %}

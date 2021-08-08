@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/topicsearch.css')}}">
+{% endblock styles %}
+{% block searchByTopic %}
+    <h4>
+        You have {{ search | count }} results
+    </h4>
+    <div class="container-fluid contentshowing">
+        <br>
+        <hr>
+        <br>
+        {{ macro.displayHomePageContent(search) }}
+</div>
+{% endblock searchByTopic %}

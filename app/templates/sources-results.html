@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macro %}
+
+{% block title %}
+    {{ title }}
+{% endblock title %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/sources-results.css')}}">
+{% endblock styles %}
+
+{% block searchresults %}
+    <div class="container-fluid">
+        <h4>
+            You have {{categoryNews | count }} results 
+        </h4>
+        <div class="row">
+            {{ macro.showCategoryContent(categoryNews) }}
+        </div>
+    </div>
+{% endblock searchresults %}

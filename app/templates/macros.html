@@ -1,0 +1,52 @@
+
+{% macro displayHomePageContent(content_list) %}
+    {% for content in content_list %}
+        <div class = "col content-card">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ content.urlToImage }}" class="card-img-top img-fluid" alt="{{ content.title }} poster">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        | Written by: {{ content.author }} 
+                        <br>
+                        | Date Published: {{ content.publishedAt | truncate(13) }}
+                    </h5>
+                    <p class="card-text">
+                        Title: {{ content.title }}
+                        <br>
+                        Description: {{ content.description }} | {{ content.source['name'] }}
+                    </p>
+                </div>
+                <div class="card-body">
+                    <a href="{{ content.url }}" class="card-link">
+                        Click to see on the website
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}
+
+
+{% macro showCategoryContent(category_list) %}
+    {% for content in category_list %}
+        <div class = "col category-card">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        ID: {{ content.id }} | Name: {{ content.name }}
+                    </h5>
+                    <h6 class = "card-subtitle mb-2 text-muted">
+                        Language: {{ content.language }}
+                        <br>
+                    </h6>
+                    <p class = "card-text">
+                        Description: {{ content.description }}
+                    </p>
+                    <a href = "{{ content.url }}" class="card-link">
+                        Click to see on the website
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endmacro %}
