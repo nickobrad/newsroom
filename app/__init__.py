@@ -1,15 +1,21 @@
 from flask import Flask
-from .config import DevConfig
+from config import config_options
 
-#Initializing application
-newsy = Flask(__name__, instance_relative_config = True)
 
-#Setting up configuration
-newsy.config.from_object(DevConfig)
-newsy.config.from_pyfile('config.py')
-newsy.config["SECRET_KEY"] = "12345678"
+def create_app(config_name):
 
-# Initializing Flask Extensions
+    app = Flask(__name__)
 
-from app import views
-from app import error
+    # Creating the app configurations
+    app.config.from_object(config_options[config_name])
+
+    # Registering the blueprint
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
+    # setting config
+    from .request import configure_request
+    configure_request(app)
+
+    # Will add the views and forms
+    return app

@@ -1,0 +1,13 @@
+.bigWrapper{
+    background-color: #006daa;
+}
+.results{
+    padding: 5px 0px;
+}
+.card{
+    margin: 7px 0px;
+    height: auto;
+}
+.card-body{
+    background-color: #b9d6f2;
+}

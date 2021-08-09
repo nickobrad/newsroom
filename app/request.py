@@ -1,18 +1,19 @@
-from app import newsy
-from .models import news_general, news_source
+from .models import GeneralNews, SourcesNews
 import urllib.request,json
-from instance import config
-from .config import Config
 
-General = news_general.GeneralNews
-Category = news_source.SourcesNews
+api_key = None
+generalURL = None
+categoryURL = None 
+topicURL = None 
+sourceURL = None 
 
-api_key = config.NEWS_API_KEY
-
-generalURL = Config.NEWS_API_GENERAL
-categoryURL = Config.NEWS_API_SOURCE
-topicURL = Config.NEWS_API_SEARCH
-sourceURL = Config.NEWS_API_SOURCE_URL
+def configure_request(app):
+    global api_key, generalURL, categoryURL, topicURL,sourceURL
+    api_key = app.config['NEWS_API_KEY']
+    generalURL = app.config['NEWS_API_GENERAL']
+    categoryURL = app.config['NEWS_API_SOURCE']
+    topicURL = app.config['NEWS_API_SEARCH']
+    sourceURL = app.config['NEWS_API_SOURCE_URL']
 
 def getTheRequired(any_list):
 
@@ -27,7 +28,7 @@ def getTheRequired(any_list):
         url = singlecontent.get('url')
         urlToImage = singlecontent.get('urlToImage')
 
-        news_article = General (source, author, title, publishedAt, description, url, urlToImage)
+        news_article = GeneralNews (source, author, title, publishedAt, description, url, urlToImage)
         general_results.append(news_article)
 
     return general_results
@@ -44,7 +45,7 @@ def getTheRequiredForCategory(any_list):
         language = singlecontent.get('language')
         category = singlecontent.get('category')
 
-        news_article = Category (id, name, description, url, language, category)
+        news_article = SourcesNews (id, name, description, url, language, category)
         category_results.append(news_article)
 
     return category_results

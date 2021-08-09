@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="{{url_for('static',filename='css/newsoutlet.css')}}">
 {% endblock styles %}
 {% block newsoutlet %}
-    <h4>
-        You have {{ outlet | count }} results on {{ title }}
-    </h4>
-    <div class="container-fluid contentshowing">
-        
-        {{ macro.displayHomePageContent(outlet) }}
+    <div class="container-fluid bigWrapper">
+        <h4 class = "results">
+            You have {{ outlet | count }} results on {{ title }}
+        </h4>
+        <div class="outletresults">
+            {{ macro.displayHomePageContent(outlet) }}
+        </div>
     </div>
 {% endblock newsoutlet %}
