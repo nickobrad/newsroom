@@ -8,7 +8,7 @@ def homepagecontent():
     loadedcontent = hp_allcontent()
 
     if topicSearch:
-        return redirect(url_for('topicLookOut', searchedTopic = topicSearch))
+        return redirect(url_for('main.topicLookOut', searchedTopic = topicSearch))
     return render_template('homepage.html', all_news = loadedcontent)
 
 @main.route('/category')
@@ -19,7 +19,7 @@ def sourcescontentbeginning():
 
     searchedCategory = request.args.get('categorySearch')
     if searchedCategory:
-        return redirect(url_for('sourcescontentaftersearch', categorySearch = searchedCategory))
+        return redirect(url_for('main.sourcescontentaftersearch', categorySearch = searchedCategory))
     else:
         return render_template('sources.html', business = businessCategory, entertainment = enterntainmentCategory, general = generalCategory)
 
