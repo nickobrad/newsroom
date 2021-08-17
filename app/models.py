@@ -6,7 +6,7 @@ class GeneralNews:
         self.publishedAt = publishedAt
         self.description = description
         self.url = url
-        self.urlToImage = urlToImage
+        self.urlToImage = urlToImage 
 
 class SourcesNews:
 
